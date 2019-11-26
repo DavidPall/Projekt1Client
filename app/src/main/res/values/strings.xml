@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Projekt1Client</string>
+    <string name="btn_vote">Submit</string>
 </resources>

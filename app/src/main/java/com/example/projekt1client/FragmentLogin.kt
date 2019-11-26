@@ -12,6 +12,9 @@ import android.widget.Button
 import android.widget.GridLayout
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentTransaction
+import com.example.firebasetest.roomNumber
+import com.example.firebasetest.userID
 import com.google.firebase.FirebaseApp
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.activity_main.*
@@ -64,7 +67,18 @@ class FragmentLogin : Fragment(){
 
 
         loginBtn.setOnClickListener {
+            if (rootView.edt_name.text.isNotEmpty() && rootView.edt_room_id.text.isNotEmpty()){
+                roomNumber = rootView.edt_room_id.text.toString()
+                userID = rootView.edt_name.text.toString()
 
+                //database.child("Groups").child(roomNumber).child("Users").child(userID).child("userID").setValue(userID)
+
+                var newFragment : Fragment = FragmentVote()
+                var transaction : FragmentTransaction = fragmentManager!!.beginTransaction()
+                transaction.replace(R.id.fragment_holder,newFragment)
+                transaction.addToBackStack(null)
+                transaction.commit()
+            }
             //Toast.makeText(this.context,roomExist.toString(),Toast.LENGTH_SHORT).show()
         }
 
