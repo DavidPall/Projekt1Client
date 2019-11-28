@@ -43,4 +43,8 @@ class MainActivity : AppCompatActivity() {
         transaction.commit()
         isFragmentOneLoaded = false
     }
+
+    override fun onBackPressed() {
+        // not calling super.onBackPressed() disable onbackpressed
+    }
 }
