@@ -1,8 +1,8 @@
-package com.example.projekt1client
+package com.example.projekt1client.View
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.google.firebase.database.FirebaseDatabase
+import com.example.projekt1client.R
 
 class MainActivity : AppCompatActivity() {
 
@@ -17,6 +17,7 @@ class MainActivity : AppCompatActivity() {
         ShowFragmentLogin()
     }
 
+    //Loading the Login fragment on the fragment holder in the Main Activity
     fun ShowFragmentLogin() {
         val transaction = manager.beginTransaction()
         val fragment = FragmentLogin()
@@ -26,23 +27,6 @@ class MainActivity : AppCompatActivity() {
         isFragmentOneLoaded = true
     }
 
-    fun ShowFragmentVote() {
-        val transaction = manager.beginTransaction()
-        val fragment = FragmentVote()
-        transaction.replace(R.id.fragment_holder, fragment)
-        transaction.addToBackStack(null)
-        transaction.commit()
-        isFragmentOneLoaded = false
-    }
-
-    fun ShowFragmentAnswers() {
-        val transaction = manager.beginTransaction()
-        val fragment = FragmentAnswers()
-        transaction.replace(R.id.fragment_holder, fragment)
-        transaction.addToBackStack(null)
-        transaction.commit()
-        isFragmentOneLoaded = false
-    }
 
     override fun onBackPressed() {
         // not calling super.onBackPressed() disable onbackpressed

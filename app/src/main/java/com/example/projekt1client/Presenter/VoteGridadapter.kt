@@ -1,4 +1,4 @@
-package com.example.projekt1client
+package com.example.projekt1client.Presenter
 
 import android.graphics.Color
 import android.view.LayoutInflater
@@ -7,7 +7,8 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import java.util.ArrayList
-import com.example.firebasetest.selectedPosition
+import com.example.projekt1client.Model.selectedPosition
+import com.example.projekt1client.R
 
 
 class VoteGridadapter(private val mDataList: ArrayList<String>) : RecyclerView.Adapter<VoteGridadapter.MyViewHolder>() {
@@ -21,6 +22,7 @@ class VoteGridadapter(private val mDataList: ArrayList<String>) : RecyclerView.A
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         holder.info_text.text = mDataList[position]
+
         if (selectedPosition === position)
             holder.itemView.setBackgroundColor(Color.parseColor("#000000"))
         else

@@ -1,4 +1,4 @@
-package com.example.firebasetest
+package com.example.projekt1client.Model
 
 var roomNumber: String = "0"
 var userID: String = ""

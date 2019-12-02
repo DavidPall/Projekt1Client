@@ -1,23 +1,18 @@
-package com.example.projekt1client
+package com.example.projekt1client.View
 
 import android.content.Context
-import android.content.Intent
-import android.graphics.drawable.ClipDrawable.HORIZONTAL
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.GridLayout
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
-import com.example.firebasetest.roomNumber
-import com.example.firebasetest.userID
-import com.google.firebase.FirebaseApp
+import com.example.projekt1client.Model.roomNumber
+import com.example.projekt1client.Model.userID
+import com.example.projekt1client.R
 import com.google.firebase.database.*
-import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_login.view.*
 
 
@@ -40,9 +35,6 @@ class FragmentLogin : Fragment(){
         Log.d(TAG,"onCreate")
         super.onCreate(savedInstanceState)
 
-
-
-
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -55,7 +47,7 @@ class FragmentLogin : Fragment(){
         database = FirebaseDatabase.getInstance().reference
 
         val databaseRef = FirebaseDatabase.getInstance()
-        val myRef = databaseRef.reference.child("Groups").orderByKey()
+        //val myRef = databaseRef.reference.child("Groups").orderByKey()
 
 
 
@@ -65,7 +57,7 @@ class FragmentLogin : Fragment(){
             TODO("not implemented") //Checking if the roomID is exist or not
         }
 
-
+        //Setting the roomNumber and the userID from the input
         loginBtn.setOnClickListener {
             if (rootView.edt_name.text.isNotEmpty() && rootView.edt_room_id.text.isNotEmpty()){
                 roomNumber = rootView.edt_room_id.text.toString()

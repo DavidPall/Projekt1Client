@@ -1,27 +1,24 @@
-package com.example.projekt1client
+package com.example.projekt1client.View
 
 import android.content.Context
-import android.content.Intent
-import android.graphics.drawable.ClipDrawable.HORIZONTAL
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.GridLayout
 import android.widget.TextView
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.firebasetest.currentQuestionID
-import com.example.firebasetest.roomNumber
+import com.example.projekt1client.Model.User
+import com.example.projekt1client.Model.currentQuestionID
+import com.example.projekt1client.Model.roomNumber
+import com.example.projekt1client.Presenter.ResultAdapter
+import com.example.projekt1client.R
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
-import kotlinx.android.synthetic.main.activity_main.*
 
 /**
  * Created by VickY on 07-09-2017.
@@ -66,11 +63,14 @@ class FragmentAnswers : Fragment(){
         return rootView
     }
 
+    //Loading the list with the votes from the firebase
     fun loadwithdata() : ArrayList<User>{
         val users : ArrayList<User> = ArrayList()
 
         val database = FirebaseDatabase.getInstance()
-        val myRef = database.reference.child("Groups").child(roomNumber).child(currentQuestionID).child("Votes")
+        val myRef = database.reference.child("Groups").child(roomNumber).child(
+            currentQuestionID
+        ).child("Votes")
 
 
         myRef.addValueEventListener(object : ValueEventListener {
@@ -84,7 +84,7 @@ class FragmentAnswers : Fragment(){
                     val current = ds.getValue(User::class.java)
                     val nameC = current?.userID
                     val voteC  = current?.Vote
-                    users.add(User(nameC,voteC))
+                    users.add(User(nameC, voteC))
                     mAdapter?.notifyDataSetChanged()
                 }
 
